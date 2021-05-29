@@ -1,7 +1,9 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/App.css';
+import Home from './views/home';
 
 function App() {
-  return <div className='App'>Let's blast🔥🚀</div>;
+  return <Home />;
 }
 
 export default App;

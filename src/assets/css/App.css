@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@500&display=swap');
+.main-box {
+  height: 80vh;
+}
+@media only screen and (max-width: 600px) {
+  .main-box {
+    height: 65vh;
+  }
+}
+.card {
+  width: 100%;
+  padding: 20px;
+  border-radius: 30px;
+  border-width: 0px;
+  background: #dfe4ea;
+  box-shadow: -10px 10px 20px #9ea2a6, 10px -10px 20px #ffffff;
+  height: 60vh;
+}
+
+.card-n {
+  overflow: auto;
+}
+
+.news-item {
+  width: 100%;
+  padding: 20px;
+  border-width: 0px;
+  border-radius: 10px;
+  background: #dfe4ea;
+  box-shadow: -11px 11px 24px #bec2c7, 11px -11px 24px #ffffff;
+  font-family: 'Baloo Chettan 2', cursive;
+}
+
+/*  For Scroll bar  */
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: hsla(0, 0%, 86%, 0.767);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff8c;
+}
+
+.news-imgbox {
+  width: 100%;
+  border-radius: 10px;
+}
+.news-text {
+  text-align: justify;
+  font-size: 18px;
+}
