@@ -1,40 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@500&display=swap');
-.main-box {
-  height: 80vh;
-}
-@media only screen and (max-width: 600px) {
-  .main-box {
-    height: 65vh;
-  }
-}
-.card {
-  width: 100%;
-  padding: 20px;
-  border-radius: 30px;
-  border-width: 0px;
-  background: #dfe4ea;
-  box-shadow: -10px 10px 20px #9ea2a6, 10px -10px 20px #ffffff;
-  height: 60vh;
-}
+/* Malayalam font from google fonts  */
 
-.card-n {
-  overflow: auto;
-}
+@import url('https://fonts.googleapis.com/css2?family=Gayathri:wght@100&display=swap');
 
-.news-item {
-  width: 100%;
-  padding: 20px;
-  border-width: 0px;
-  border-radius: 10px;
-  background: #dfe4ea;
-  box-shadow: -11px 11px 24px #bec2c7, 11px -11px 24px #ffffff;
-  font-family: 'Baloo Chettan 2', cursive;
-}
-
-/*  For Scroll bar  */
+/*  For Scroll bar inside the news card */
 /* width */
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 5px;
 }
 
 /* Handle */
@@ -48,11 +19,115 @@
   background: #ffffff8c;
 }
 
+.main-box {
+  height: 80vh;
+}
+@media only screen and (max-width: 600px) {
+  .main-box {
+    height: 100vh;
+  }
+
+  .card {
+    height: 80vh !important;
+    margin-top: -10vh;
+  }
+}
+
+/* Basic Card */
+.card {
+  width: 100%;
+  padding: 20px;
+  border-radius: 30px;
+  border-width: 0px;
+  background: #dfe4ea;
+  box-shadow: -10px 10px 20px #9ea2a6, 10px -10px 20px #ffffff;
+  height: 60vh;
+}
+
+/* For scrolling in news Card  */
+.card-n {
+  overflow: auto;
+}
+
+/* For single news item card inside the main card  */
+.news-item {
+  width: 100%;
+  padding: 20px;
+  border-width: 0px;
+  border-radius: 10px;
+  background: #dfe4ea;
+  box-shadow: -11px 11px 24px #bec2c7, 11px -11px 24px #ffffff;
+  font-family: 'Gayathri', sans-serif;
+}
+
+.news-item:hover {
+  background-color: #ecedee;
+  box-shadow: -20px 21px 24px #bec2c7, 11px -11px 24px #ffffff;
+
+  height: 110%;
+}
+
 .news-imgbox {
   width: 100%;
   border-radius: 10px;
 }
 .news-text {
-  text-align: justify;
   font-size: 18px;
+}
+.links {
+  color: #131313;
+  font-weight: bold;
+  text-align: start !important;
+}
+/* for search box styling  */
+
+.form-group {
+  position: relative;
+  padding: 5px 0 0;
+}
+
+.search-box {
+  font-family: inherit;
+  width: 80%;
+  border: 0;
+  border-bottom: 1px solid #131313;
+  outline: 0;
+  font-size: 0.9rem;
+  color: #131313;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.search-box::placeholder {
+  color: transparent;
+}
+
+.search-box:placeholder-shown ~ .form-label {
+  font-size: 1rem;
+  cursor: text;
+  top: 10px;
+}
+
+.form-label {
+  position: absolute;
+  top: -7px;
+  display: block;
+  transition: 0.2s;
+  font-size: 0.7rem;
+  color: #9b9b9b;
+}
+
+.serch-btn {
+  position: absolute;
+  background: transparent;
+  border: 0;
+  padding: 5px;
+}
+
+/* for language select box  */
+.lang-select {
+  background: transparent;
+  height: 30px;
+  border-radius: 5%;
+  margin-left: 10px;
 }

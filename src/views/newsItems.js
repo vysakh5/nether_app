@@ -1,5 +1,5 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Row, Col, Button } from 'react-bootstrap';
 
 let newsItem = {
   source: {
@@ -20,7 +20,24 @@ let newsItem = {
     'Twentyfournews.com ,a news portal from the house of Insight Media City.The portal stands among the very few non biased news portals from the state of kerala.',
 };
 
-export default function newsItems() {
+export default function NewsItems() {
+  const [state, toggleState] = useState(false);
+
+  const NewsDisc = () => {
+    if (state) {
+      return (
+        <>
+          <p className='text-justify'>{newsItem.description}</p>
+          <a className='links' href={newsItem.url}>
+            Read Full News at {newsItem.source.name}
+          </a>
+        </>
+      );
+    } else {
+      return <></>;
+    }
+  };
+
   return (
     <>
       <div className='news-item m-2 '>
@@ -30,8 +47,34 @@ export default function newsItems() {
           </Col>
           <Col lg='8' md='12'>
             <Row>
-              <strong>{newsItem.title}</strong>
+              <Col className='text-justify mt-2'>
+                <strong>{newsItem.title}</strong>
+              </Col>
             </Row>
+            <Row className='mt-2'>
+              <Col sm='6' md='4'>
+                <i className='fas fa-user'></i>
+                <strong> {newsItem.author}</strong>
+              </Col>
+              <Col sm='6' md='4'>
+                <i className='fas fa-calendar'></i>
+                <strong> 29/05/2021</strong>
+              </Col>
+              <Col sm='12' md='4'>
+                <Button
+                  variant='link'
+                  className='pt-0 links'
+                  onClick={() => toggleState(!state)}
+                >
+                  {state ? 'Read less' : 'Read more '}
+                </Button>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        <Row className='mt-3'>
+          <Col>
+            <NewsDisc />
           </Col>
         </Row>
       </div>
