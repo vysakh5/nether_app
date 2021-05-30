@@ -22,7 +22,7 @@ export default function news() {
 
                 <button className='serch-btn'>
                   {' '}
-                  <i class='fas fa-search'></i>
+                  <i className='fas fa-search'></i>
                 </button>
               </div>
             </Col>
