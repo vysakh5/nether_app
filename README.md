@@ -3,7 +3,7 @@
 An App for both news and weather
 
 - Demo => https://esptrail1.web.app/
-- note : newsapi note work in firebase server Its need Upgrade
+- note : newsapi not work from external server, Its need Upgrade
 
 # Docs
 
