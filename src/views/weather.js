@@ -10,7 +10,7 @@ export default function Weather() {
     let response = await getWeather();
     console.log(response);
 
-    if (!response.error) {
+    if (response) {
       setstate({ ...response, ...{ loading: false } });
     }
   };
@@ -22,22 +22,46 @@ export default function Weather() {
   const LoadedScreen = () => {
     if (state.loading) {
       return <div> Loading </div>;
+    } else if (state.error) {
+      return (
+        <div className='news-item'>
+          <p> Error : {state.msg}</p>
+        </div>
+      );
     } else {
+      let weatherImg = '01d'; // default image for sun
+      // For Weather condition code full details @ https://openweathermap.org/weather-conditions
+      if (state.weather) {
+        if (state.weather[0].id < 233 && state.weather[0].id > 199) {
+          weatherImg = '11d';
+        } else if (state.weather[0].id < 531 && state.weather[0].id > 499) {
+          weatherImg = '10d';
+        } else if (state.weather[0].id < 805 && state.weather[0].id > 800) {
+          weatherImg = '02d';
+        }
+      }
+
       return (
         <div className='weather-card'>
           <div className='card card-w'>
             <div>
               <Row className='weather-dcr'>
                 <img
-                  src='https://ifttt.com/images/channels/weather_lrg.png'
+                  src={`http://openweathermap.org/img/wn/${weatherImg}@2x.png`}
                   alt=''
-                  className=''
+                  className='mt-3 ml-2'
                   height='50px'
                 />
-                <p className='mt-4 ml-4'> {state.cod}</p>
+                <p className='mt-4 ml-4'>
+                  {' '}
+                  {state.weather ? state.weather[0].main : ''}
+                </p>
               </Row>
               <Row>
-                <div className='tem-text '>26</div>
+                <div className='tem-text '>
+                  {state.weather ? Math.trunc(state.main.temp) : ''}{' '}
+                  {/* trunc becouse of the text is to big  */}
+                </div>
 
                 <p className='sup'>°C</p>
               </Row>
@@ -51,7 +75,9 @@ export default function Weather() {
                     </Row>
                     <Row>
                       <Col className='text-center'>
-                        <h1 className='box-head-1 '>15</h1>
+                        <h1 className='box-head-1 '>
+                          {state.main ? Math.trunc(state.main.feels_like) : ''}{' '}
+                        </h1>
                       </Col>
                     </Row>
                     <Row>
@@ -65,7 +91,10 @@ export default function Weather() {
                   </Row>
                   <Row>
                     <Col className='text-center'>
-                      <h1 className='box-head-1 '>15</h1>
+                      <h1 className='box-head-1 '>
+                        {' '}
+                        {state.wind ? state.wind.speed : ''}{' '}
+                      </h1>
                     </Col>
                   </Row>
                   <Row>
@@ -81,7 +110,9 @@ export default function Weather() {
                     </Row>
                     <Row>
                       <Col className='text-center'>
-                        <h1 className='box-head-1 '>65</h1>
+                        <h1 className='box-head-1 '>
+                          {state.main ? Math.trunc(state.main.humidity) : ''}{' '}
+                        </h1>
                       </Col>
                     </Row>
                     <Row>
@@ -95,7 +126,9 @@ export default function Weather() {
                   </Row>
                   <Row>
                     <Col className='text-center'>
-                      <h1 className='box-head-1 '>1521</h1>
+                      <h1 className='box-head-1 '>
+                        {state.main ? Math.trunc(state.main.pressure) : ''}{' '}
+                      </h1>
                     </Col>
                   </Row>
                   <Row>
@@ -108,7 +141,8 @@ export default function Weather() {
               <Row>
                 <Col className='text-center mt-1 location-text'>
                   {' '}
-                  <i className='fas fa-map-marker-alt mr-2'></i> Kodungaloor{' '}
+                  <i className='fas fa-map-marker-alt mr-2'></i>
+                  {state.name}{' '}
                 </Col>
               </Row>
             </div>
