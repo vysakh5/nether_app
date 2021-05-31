@@ -5,28 +5,38 @@ import NewsItems from './newsItems';
 import { getNews } from '../data/ApiCalls';
 
 export default function News() {
-  const [state, setstate] = useState([]);
-  const [status, setStatus] = useState({
+  let initialStatus = {
     loading: true,
     error: false,
     msg: '',
-  });
-  const [searchParams, setParam] = useState({});
+  };
 
+  //Hooks initials
+  const [state, setstate] = useState([]); //For News List
+  const [status, setStatus] = useState(initialStatus); // For Status checking and error management
+  const [searchParams, setParam] = useState({}); // For Search parameters such as search text, sort, lang.
+
+  useEffect(() => {
+    getData();
+  }, [searchParams.lang, searchParams.sort]); // Fetch the news from server when language or sort changed
+
+  //handle function for search text lanuage, sort
   const handleChange = (e) =>
     setParam({ ...searchParams, [e.target.name]: e.target.value });
 
+  // Fetching data from server
   const getData = async (searchQuery) => {
     let searchData = {};
-
+    // compaining Search text and other params
     if (searchQuery) {
       searchData = { ...searchParams, ...{ searchText: searchQuery } };
     } else {
       searchData = searchParams;
     }
+    // Geting data from server
     let response = await getNews(searchData);
-    console.log(response);
 
+    // For Error Management
     if (response.status === 'ok') {
       setstate(response.articles);
       setStatus({ loading: false });
@@ -35,10 +45,7 @@ export default function News() {
     }
   };
 
-  useEffect(() => {
-    getData();
-  }, [searchParams.lang, searchParams.sort]);
-
+  //News List and error management
   const NewsList = () => {
     if (status.loading) {
       return <div className='news-item ml-2 mt-3 text-center'>Loading..</div>;
@@ -68,6 +75,7 @@ export default function News() {
       <div className='card card-n'>
         <div className='news-item ml-2'>
           <Row>
+            {/* Card for search and sort and language   */}
             <Col lg='6' md='6' sm='6'>
               <div className='form-group'>
                 <input
@@ -90,9 +98,7 @@ export default function News() {
                 </button>
               </div>
             </Col>
-            {/* <Col lg='3' sm='1'>
-              <button> Se</button>
-            </Col> */}
+
             <Col
               lg='6'
               md='6'
@@ -109,6 +115,7 @@ export default function News() {
                 <option value='ml'>Malayalam</option>
                 <option value='en'>English</option>
                 <option value='hi'>Hindi</option>
+                <option value='ta'>Tamil</option>
               </select>
 
               <select

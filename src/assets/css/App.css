@@ -1,4 +1,4 @@
-/* Malayalam font from google fonts  */
+/* Local Language font from google fonts  */
 
 @import url('https://fonts.googleapis.com/css2?family=Gayathri:wght@100&display=swap');
 
@@ -19,9 +19,12 @@
   background: #ffffff8c;
 }
 
+/* Main 2 boxs  */
 .main-box {
   height: 80vh;
 }
+
+/* Responsive and mobile  */
 @media only screen and (max-width: 600px) {
   .main-box {
     height: 100vh;
@@ -41,11 +44,7 @@
 .card {
   width: 100%;
   padding: 20px;
-
-  /* background: #dfe4ea;
-  box-shadow: -10px 10px 20px #9ea2a6, 10px -10px 20px #ffffff; */
   height: 60vh;
-
   background: rgba(233, 233, 234, 0.55);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(7px);
@@ -63,12 +62,7 @@
 .news-item {
   width: 100%;
   padding: 20px;
-  /* border-width: 0px;
-  border-radius: 10px; */
-  /* background: #dfe4ea;
-  box-shadow: -11px 11px 24px #bec2c7, 11px -11px 24px #ffffff; */
   font-family: 'Gayathri', sans-serif;
-
   background: rgba(233, 233, 234, 0.55);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(7px);
@@ -94,11 +88,14 @@
 .news-text {
   font-size: 18px;
 }
-.links {
-  color: #131313;
+.links,
+.text-small {
+  color: #6b6b6ba2;
   font-weight: bold;
   text-align: start !important;
+  font-size: 12px;
 }
+
 /* for search box styling  */
 
 .form-group {

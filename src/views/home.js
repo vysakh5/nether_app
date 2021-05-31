@@ -8,11 +8,14 @@ export default function home() {
       {/* Nav Bar section */}
       <Navbar
         expand='lg'
-        variant='dark'
-        bg='dark'
+        variant='light'
+        bg='lite'
         className='justify-content-center'
       >
-        <Navbar.Brand href='#'>NETHER</Navbar.Brand>
+        <Navbar.Brand href='#'>
+          {' '}
+          <h2>NETHER</h2>
+        </Navbar.Brand>
       </Navbar>
 
       {/* Nav Bar section END */}

@@ -3,9 +3,14 @@ import { Row, Col } from 'react-bootstrap';
 import { getWeather } from '../data/ApiCalls';
 
 export default function Weather() {
+  //Hooks initials
   let initialState = { loading: true };
   const [state, setstate] = useState(initialState);
+  useEffect(() => {
+    setstate(getData());
+  }, []);
 
+  // Featching data
   const getData = async () => {
     let response = await getWeather();
     console.log(response);
@@ -15,14 +20,13 @@ export default function Weather() {
     }
   };
 
-  useEffect(() => {
-    setstate(getData());
-  }, []);
-
+  // Error management and result
   const LoadedScreen = () => {
+    //For Loading time
     if (state.loading) {
-      return <div> Loading </div>;
+      return <div className='news-item'> Loading ..</div>;
     } else if (state.error) {
+      //For Error Screen
       return (
         <div className='news-item'>
           <p> Error : {state.msg}</p>
@@ -30,6 +34,7 @@ export default function Weather() {
       );
     } else {
       let weatherImg = '01d'; // default image for sun
+
       // For Weather condition code full details @ https://openweathermap.org/weather-conditions
       if (state.weather) {
         if (state.weather[0].id < 233 && state.weather[0].id > 199) {
@@ -40,7 +45,7 @@ export default function Weather() {
           weatherImg = '02d';
         }
       }
-
+      //Result
       return (
         <div className='weather-card'>
           <div className='card card-w'>

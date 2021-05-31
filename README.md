@@ -2,8 +2,8 @@
 
 An App for both news and weather
 
-## Steps
+- Weather api Docs => https://openweathermap.org/current
 
-- UI-UX Design
-- Design implimentation in React
-- API integration
+- News Api Docs => https://newsapi.org/docs
+
+- Axios docs => https://github.com/axios/axios

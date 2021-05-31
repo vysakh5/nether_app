@@ -22,8 +22,9 @@ import { Row, Col, Button } from 'react-bootstrap';
 
 export default function NewsItems(props) {
   const newsItem = props.newsItem;
-  const [state, toggleState] = useState(false);
+  const [state, toggleState] = useState(false); // For Readmore toggling
 
+  // Readmode description
   const NewsDisc = () => {
     if (state) {
       return (
@@ -52,7 +53,7 @@ export default function NewsItems(props) {
                 <strong>{newsItem.title}</strong>
               </Col>
             </Row>
-            <Row className='mt-2'>
+            <Row className='mt-1 text-small'>
               <Col sm='6' md='4'>
                 <i className='fas fa-user'></i>
                 <strong> {newsItem.author}</strong>
